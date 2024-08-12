@@ -28,10 +28,15 @@ fnCreateRoute <- function(x, overview){
 
 # * 1.1. Load East Kent Hospitals catchment area ----
 # ───────────────────────────────────────────────────
+
+# NB: Replace this with the location of the rds file on local machine
 df_ekhuft_catchment <- readRDS('./data/EK_Filter.rds')
 
 # * 1.2. Load LSOA 2011 Popn Weight Centroids ----
 # ────────────────────────────────────────────────
+
+# NB: The LSOA 2011 PWC file can be found here on Open Geography Portal
+# https://geoportal.statistics.gov.uk/datasets/54a76a36e3b4420a9ea83fcf7994525d_0/explore
 df_lsoa11_pwc <- read.csv('C:/Data/OpenGeography/Lookups/LSOA11_PWC/LSOA_Dec_2011_PWC_in_England_and_Wales_2022_1923591000694358693.csv') %>%
   mutate(EAST = x, NRTH = y) %>%
   st_as_sf(coords = c('x','y'), dim = 'XY', crs = 27700) %>%
